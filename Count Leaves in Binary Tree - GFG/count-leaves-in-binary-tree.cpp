@@ -116,13 +116,25 @@ struct Node
    20       30 */
  void traverse(Node * root ,int &count)
  {
-     if(root ==NULL)
-      return ;
-      
-     if(root->left==NULL && root->right==NULL)
-      count++;
-      traverse(root->left,count);
-      traverse(root->right,count);
+     stack<Node * > st;
+     if(root==NULL)
+     {
+         count=0;
+         return ;
+     }
+     st.push(root);
+     while(st.size()>0)
+     {
+         Node * temp=st.top();
+         st.pop();
+         if(!temp->right && !temp->left)
+           count++;
+         else
+         {
+             if(temp->right) st.push(temp->right);
+             if(temp->left)  st.push(temp->left);
+         }
+     }
  }
 int countLeaves(Node* root)
 {
