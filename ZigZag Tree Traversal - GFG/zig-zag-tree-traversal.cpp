@@ -107,6 +107,7 @@ class Solution{
     {
     	// Code here
     	vector<int> vtr;
+    	
     	vector<vector<int>> vect;
     	if(root==NULL)
     	return vtr;
@@ -118,6 +119,7 @@ class Solution{
     	    int size=que.size();
     	   
     	    vector<int>v;
+    	    
     	    for(int i=0;i<size;i++)
     	    {
     	         Node * temp=que.front();
