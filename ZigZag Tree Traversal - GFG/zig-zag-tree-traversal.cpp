@@ -106,20 +106,16 @@ class Solution{
     vector <int> zigZagTraversal(Node* root)
     {
     	// Code here
-    	vector<int> vtr;
-    	
-    	vector<vector<int>> vect;
+    	vector<int> v;
     	if(root==NULL)
-    	return vtr;
+    	return v;
     	queue<Node *>que;
     	que.push(root);
     	int flag=0;
+    	vector<int>:: iterator itr;
     	while(que.empty()==false)
     	{
     	    int size=que.size();
-    	   
-    	    vector<int>v;
-    	    
     	    for(int i=0;i<size;i++)
     	    {
     	         Node * temp=que.front();
@@ -129,20 +125,14 @@ class Solution{
     	         if(flag==0)
     	         v.push_back(temp->data);
     	         else 
-    	         v.insert(v.begin(),temp->data);
+    	         v.insert(v.end()-i,temp->data);
     	    }
+    	    
     	    flag=!flag;
-    	    vect.push_back(v);
+    	   
     	}
-    	for(int i=0;i<vect.size();i++)
-    	{
-    	    for(int j=0;j<vect[i].size();j++)
-    	    {
-    	        vtr.push_back(vect[i][j]);
-    	    }
-    	}
-    	return vtr;
-    	
+    	return v;
+
     	
     }
 };
